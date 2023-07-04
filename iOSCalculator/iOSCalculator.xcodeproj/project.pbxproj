@@ -59,6 +59,7 @@
 				4F92FBEE2A53FD7800ECAE16 /* Supporting Files */,
 				4F92FBDE2A53FB3700ECAE16 /* ViewController.swift */,
 				4F92FBE02A53FB3700ECAE16 /* Main.storyboard */,
+				4F92FBE82A53FB3800ECAE16 /* Info.plist */,
 			);
 			path = iOSCalculator;
 			sourceTree = "<group>";
@@ -70,7 +71,6 @@
 				4F92FBDC2A53FB3700ECAE16 /* SceneDelegate.swift */,
 				4F92FBE32A53FB3800ECAE16 /* Assets.xcassets */,
 				4F92FBE52A53FB3800ECAE16 /* LaunchScreen.storyboard */,
-				4F92FBE82A53FB3800ECAE16 /* Info.plist */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";

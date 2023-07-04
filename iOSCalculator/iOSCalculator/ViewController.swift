@@ -13,7 +13,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
+    
+    @IBAction func touchDigit(_ sender: UIButton) {
+        print("touchDigit!")
+    }
+    
 
 }
 

@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var display: UILabel!
     
     var userIsInTheMiddleOfTyping = false
@@ -31,14 +31,25 @@ class ViewController: UIViewController {
         userIsInTheMiddleOfTyping = true
     }
     
+    var displayValue : Double {
+        get {
+            return Double(display.text!)!
+        }
+        set{
+            display.text = String(newValue)
+        }
+    }
+    
     @IBAction func performOperation(_ sender: UIButton) {
         if let mathmaticalSymbol = sender.currentTitle {
             if mathmaticalSymbol == "π" {
-                display.text = String(M_PI)
+                displayValue = M_PI
+            }
+            else if mathmaticalSymbol == "√" {
+                displayValue = sqrt(displayValue)
             }
         }
-        
     }
-    
+     
 }
 

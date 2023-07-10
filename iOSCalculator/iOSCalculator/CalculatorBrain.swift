@@ -24,7 +24,10 @@ class CalculatorBrain {
         "e" : Operation.Constant(M_E),
         "√" : Operation.UnaryOperation(sqrt),
         "cos" : Operation.UnaryOperation(cos),
+        "+" : Operation.BinaryOperation(multiply),
+        "-" : Operation.BinaryOperation(multiply),
         "×" : Operation.BinaryOperation(multiply),
+        "÷" : Operation.BinaryOperation(multiply),
         "=" : Operation.Equals
     ]
     
@@ -40,12 +43,11 @@ class CalculatorBrain {
             switch operation {
             case .Constant(let associatedConstantValue) : accumulator = associatedConstantValue
             case .UnaryOperation(let function) : accumulator = function(accumulator)
-            case .BinaryOperation(let function) :pending = PendingBinaryOperationInfo(binaryFunction: function, firstOperand: accumulator)
+            case .BinaryOperation(let function) :
+                executePendingBinaryOperation()
+                pending = PendingBinaryOperationInfo(binaryFunction: function, firstOperand: accumulator)
             case .Equals :
-                if pending != nil {
-                    accumulator = pending!.binaryFunction(pending!.firstOperand, accumulator)
-                    pending = nil
-                }
+                executePendingBinaryOperation()
             }
         }
 //        if let constant = operations[symbol]{
@@ -56,6 +58,13 @@ class CalculatorBrain {
 //            case "√" : accumulator = sqrt(accumulator)
 //        default : break
 //        }
+    }
+    
+    private func executePendingBinaryOperation(){
+        if pending != nil {
+            accumulator = pending!.binaryFunction(pending!.firstOperand, accumulator)
+            pending = nil
+        }
     }
     
     private var pending : PendingBinaryOperationInfo?

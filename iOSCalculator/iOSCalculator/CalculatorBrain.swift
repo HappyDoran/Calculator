@@ -17,7 +17,7 @@ class CalculatorBrain {
         accumulator = operand
     }
     
-    var operations : Dictionary<String,Operation> = [
+    private var operations : Dictionary<String,Operation> = [
         "π" : Operation.Constant(M_PI),
         "e" : Operation.Constant(M_E),
         "√" : Operation.UnaryOperation(sqrt),
@@ -29,7 +29,7 @@ class CalculatorBrain {
         "=" : Operation.Equals
     ]
     
-    enum Operation {
+    private enum Operation {
         case Constant(Double)
         case UnaryOperation((Double) -> Double)
         case BinaryOperation((Double,Double) -> Double)
